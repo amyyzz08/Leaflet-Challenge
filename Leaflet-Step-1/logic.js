@@ -16,9 +16,9 @@ var myMap = L.map("map", {
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
 function quakeColor(magnitude){
-    if (magnitude >= 5) {
+     if (magnitude >= 5) {
         return "Red"
-    } else if (magnitude >=4 && magnitude <4.99) {
+    } else if (magnitude >=4 && magnitude < 4.99) {
         return "DarkOrange"
     } else if (magnitude >=3 && magnitude < 3.99) {
         return "Orange"
@@ -36,9 +36,9 @@ d3.json(url).then(earthquake => {
         
     // Your data markers should reflect the magnitude of the earthquake in their size and colour. 
     // Earthquakes with higher magnitudes should appear larger and darker in colour.
-    earthquake.features.forEach(feature =>{
+    earthquake.features.forEach(feature => {
 
-        L.circle([feature.geometry.coordinates[1],feature.geometry.coordinates[0]],{
+        L.circle([feature.geometry.coordinates[1],feature.geometry.coordinates[0]], {
             radius: feature.properties.mag * 10000,
             color: "black",
             weight: 1,
@@ -58,7 +58,7 @@ d3.json(url).then(earthquake => {
 var legend = L.control({ position: "bottomright"});
 
 legend.onAdd = function() {
-    var div = L.DomUntil.create('div','info legend'),
+    var div = L.DomUtil.create('div','info legend');
     
     var grades = [0, 1, 2, 3, 4, 5];
     var colors = ["Lime","GreenYellow","Yellow","Orange","DarkOrange","Red"];
@@ -71,4 +71,4 @@ legend.onAdd = function() {
         return div;
 };
 
-legend.addTo(newMap);
+legend.addTo(myMap);

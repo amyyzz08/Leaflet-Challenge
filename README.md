@@ -10,7 +10,6 @@ The first task was to create a basic visualisation by using the geojson dataset 
 
 Created a map using Leaflet that plots all of the earthquakes from the dataset based on their longitude and latitude.
 
-<br>
 
 * The data markers reflect the magnitude of the earthquake in their size and colour. Earthquakes with higher magnitudes should appear larger and darker in colour.
 

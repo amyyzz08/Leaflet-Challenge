@@ -55,7 +55,20 @@ d3.json(url).then(earthquake => {
         
 // Create a legend that will provide context for your map data.
 
+var legend = L.control({ position: "bottomright"});
+
+legend.onAdd = function() {
+    var div = L.DomUntil.create('div','info legend'),
     
+    var grades = [0, 1, 2, 3, 4, 5];
+    var colors = ["Lime","GreenYellow","Yellow","Orange","DarkOrange","Red"];
 
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=  
+        "<i style='background: " + colors[i] + "'></i> " +
+        grades[i] + (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>": "+");
+    }
+        return div;
+};
 
-
+legend.addTo(newMap);
